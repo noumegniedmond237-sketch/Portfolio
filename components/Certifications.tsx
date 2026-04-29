@@ -3,6 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Award, ChevronDown, ExternalLink, Brain, Code, Network, ArrowLeft, Eye, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+import awsPdf from '../assets/AWS.pdf';
+import ibmPdf from '../assets/IBM.pdf';
+import claudeActionPdf from '../assets/Claude Code in Action.pdf';
+import claudeVertexPdf from '../assets/Claude with Google Vrtex AI.pdf';
+import mcpIntroPdf from '../assets/Introduction to Model Context Protocol.pdf';
+import mcpAdvancedPdf from '../assets/Model Context Protocol Advanced Topics.pdf';
+
 const certificationsData = [
   {
     discipline: "Prompt Engineering & IA",
@@ -10,6 +17,54 @@ const certificationsData = [
     color: "text-pink-400",
     bgColor: "bg-pink-500/20",
     certifications: [
+      {
+        title: "Prompt Engineering with Amazon Q Developer",
+        issuer: "AWS Training & Certification",
+        date: "2026",
+        description: "Utilisation d'Amazon Q Developer pour optimiser l'ingénierie de prompts.",
+        link: "#",
+        pdfUrl: awsPdf
+      },
+      {
+        title: "Prompt Engineering for Everyone",
+        issuer: "IBM / Cognitive Class",
+        date: "2026",
+        description: "Fondamentaux de l'ingénierie de prompts pour tous les niveaux.",
+        link: "#",
+        pdfUrl: ibmPdf
+      },
+      {
+        title: "Claude Code in Action",
+        issuer: "Anthropic",
+        date: "2026",
+        description: "Mise en pratique du développement avec Claude et l'écosystème Anthropic.",
+        link: "#",
+        pdfUrl: claudeActionPdf
+      },
+      {
+        title: "Claude with Google Vertex AI",
+        issuer: "Anthropic",
+        date: "2026",
+        description: "Intégration et utilisation de Claude via la plateforme Google Vertex AI.",
+        link: "#",
+        pdfUrl: claudeVertexPdf
+      },
+      {
+        title: "Introduction to Model Context Protocol",
+        issuer: "Anthropic",
+        date: "2026",
+        description: "Introduction au protocole Model Context Protocol (MCP).",
+        link: "#",
+        pdfUrl: mcpIntroPdf
+      },
+      {
+        title: "MCP Advanced Topics",
+        issuer: "Anthropic",
+        date: "2026",
+        description: "Sujets avancés et implémentations complexes avec le Model Context Protocol.",
+        link: "#",
+        pdfUrl: mcpAdvancedPdf
+      },
       {
         title: "Advanced Prompt Engineering",
         issuer: "OpenAI / DeepLearning.AI",
@@ -227,12 +282,28 @@ const Certifications: React.FC = () => {
                   <X size={20} />
                 </button>
               </div>
-              <div className="flex-grow w-full bg-slate-950 relative">
-                <iframe
-                  src={`${previewPdf.url}#toolbar=0`}
-                  className="absolute inset-0 w-full h-full border-0"
-                  title={`Prévisualisation de ${previewPdf.title}`}
-                />
+              <div className="flex-grow w-full bg-slate-950 relative flex flex-col">
+                <div className="bg-blue-900/20 border-b border-blue-500/20 p-3 flex flex-col sm:flex-row items-center justify-between px-4 gap-3">
+                  <p className="text-blue-200/70 text-sm text-center sm:text-left">
+                    Si le PDF ne s'affiche pas (bloqué par le navigateur), vous pouvez l'ouvrir directement.
+                  </p>
+                  <a
+                    href={previewPdf.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 px-4 py-1.5 bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 border border-blue-500/30"
+                  >
+                    <ExternalLink size={14} />
+                    Ouvrir dans un nouvel onglet
+                  </a>
+                </div>
+                <div className="flex-grow relative">
+                  <iframe
+                    src={`${previewPdf.url}#toolbar=0`}
+                    className="absolute inset-0 w-full h-full border-0"
+                    title={`Prévisualisation de ${previewPdf.title}`}
+                  />
+                </div>
               </div>
             </motion.div>
           </motion.div>
